@@ -5,6 +5,6 @@
 ###Added
 
 ###Changed
-
+- Removed unsused files and examples with make template_init #6
 ###Fixed
 
