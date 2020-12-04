@@ -3,7 +3,7 @@ locals {
 }
 
 data "template_file" "nomad_job_nifi_registry" {
-  template = file("${path.module}/conf/nomad/nifi_registry.hcl")
+  template = file("${path.module}/nomad/nifi_registry.hcl")
   vars = {
     datacenters              = local.datacenters
     namespace                = var.nomad_namespace

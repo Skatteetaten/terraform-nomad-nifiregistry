@@ -3,6 +3,9 @@
 ## 0.0.1 [UNNRELEASED]
 
 ###Added
+- Create a working example for nifi registry #1
+- Make up builds vagrant box with nifi registry #3
+- Added make proxy-nifi-reg #3
 
 ###Changed
 - Removed unsused files and examples with make template_init #6

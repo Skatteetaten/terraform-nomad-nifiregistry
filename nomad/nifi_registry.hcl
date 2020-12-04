@@ -71,7 +71,6 @@ job "${service_name}" {
         data = <<EOH
          NIFI_REGISTRY_WEB_HTTP_HOST = "${host}"
          NIFI_REGISTRY_WEB_HTTP_PORT = "${port}"
-         NIFI_REGISTRY_WEB_SHOULD_SEND_SERVER_VERSION = "true"
         EOH
         destination = "local/config.env"
         env = true
