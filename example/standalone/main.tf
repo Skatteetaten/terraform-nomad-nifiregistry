@@ -1,4 +1,4 @@
-module "nifi-registry" {
+module "nifi_registry" {
   source = "../.."
 
   # nomad
