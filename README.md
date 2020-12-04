@@ -1,10 +1,6 @@
 <!-- markdownlint-disable MD041 -->
 <p align="center"><a href="https://github.com/fredrikhgrelland/vagrant-hashistack-template" alt="Built on"><img src="https://img.shields.io/badge/Built%20from%20template-Vagrant--hashistack--template-blue?style=for-the-badge&logo=github"/></a><p align="center"><a href="https://github.com/fredrikhgrelland/vagrant-hashistack" alt="Built on"><img src="https://img.shields.io/badge/Powered%20by%20-Vagrant--hashistack-orange?style=for-the-badge&logo=vagrant"/></a></p></p>
 
-> :warning: The text under headlines are examples, and should be removed.
->
-> :warning: Remove this line and the one above!
-
 # Terraform-module-nifiregistry
 This module is IaC - infrastructure as code which contains a nomad job of [Nifi registry](https://nifi.apache.org/registry.html).
 
