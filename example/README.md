@@ -3,7 +3,7 @@ All examples have their own directories, with a `main.tf` that references one or
 
 | Examples       |
 | :------------- |
-| [Vagrant box example](vagrant_box_example) |
+| [standalone](standalone) |
 
 ## References
 - [Creating Modules - official terraform documentation](https://www.terraform.io/docs/modules/index.html)
