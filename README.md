@@ -100,7 +100,9 @@ module "nifi_registry" {
 ## Outputs
 | Name | Description | Type |
 |------|-------------|------|
-| service\_name | nifi registry service name | string |
+| nifi\_reg\_service\_name | nifi registry service name | string |
+| nifi\_reg\_port | nifi registry port number | number |
+| nifi\_reg\_host | nifi registry host | string |
 
 ## Contributors
 

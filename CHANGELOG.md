@@ -17,5 +17,6 @@
 ### Changed
 - Removed unsused files and examples with make template_init #6
 - Updated README files #2
+- Added port and host to output.tf #13
 ### Fixed
 
