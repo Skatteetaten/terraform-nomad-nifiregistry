@@ -1,6 +1,12 @@
 # Changelog
 
-## 0.0.1 [UNNRELEASED]
+## [0.1.1 UNRELEASED]
+
+### Added
+
+### Changed
+
+## [0.1.0]
 
 ### Added
 - Create a working example for nifi registry #1
