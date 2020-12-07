@@ -47,7 +47,7 @@ First create a proxy to connect with the Nifi registry service:
 ```
 make proxy-nifi-reg
 ```
-You can now visit the UI on [localhost:18080](http://127.0.0.1:18080/nifi-registry/).
+You can now visit the UI on [http://127.0.0.1:18080/nifi-registry/](http://127.0.0.1:18080/nifi-registry/).
 
 ### Providers
 - [Nomad](https://registry.terraform.io/providers/hashicorp/nomad/latest/docs)
