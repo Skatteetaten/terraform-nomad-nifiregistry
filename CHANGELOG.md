@@ -1,7 +1,7 @@
 # Changelog
 
 ## [0.1.1 UNRELEASED]
-
+- Update vagrant-box, `version = ">= 0.9, < 0.10"` #17
 ### Added
 
 ### Changed
