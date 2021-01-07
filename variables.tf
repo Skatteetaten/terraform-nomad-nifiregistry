@@ -89,3 +89,43 @@ variable "use_canary" {
   description = "Uses canary deployment for Nifi"
   default     = false
 }
+
+variable "git_remote_url" {
+  type = string
+  description = "URL of the remote git repository. Must be HTTPS."
+  default = "default"
+}
+
+variable "git_checkout_branch" {
+  type = string
+  description = "Branch to checkout and track."
+  default = ""
+}
+
+variable "flow_provider_git_flow_storage_directory" {
+  type = string
+  description = "Destination directory for clone."
+  default = "/opt/nifi-registry/flow-storage"
+}
+
+variable "flow_provider_git_remote_to_push" {
+  type = string
+  description = "This variable is used in clone script to set origin name."
+  default = ""
+}
+
+variable "flow_provider_git_remote_access_user" {
+  type = string
+  description = "Username"
+  default = ""
+}
+
+variable "flow_provider_git_remote_access_password" {
+  type = string
+  description = "Username"
+  default = "password"
+}
+
+
+
+
