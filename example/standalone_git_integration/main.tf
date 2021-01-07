@@ -21,4 +21,12 @@ module "nifi_registry" {
     cpu    = 200
     memory = 128
   }
+
+  # Git version control configuration
+  git_remote_url = ""
+  git_checkout_branch = "master"
+  flow_provider_git_flow_storage_directory = ""
+  flow_provider_git_remote_access_user = ""
+  flow_provider_git_remote_access_password = ""
+
 }

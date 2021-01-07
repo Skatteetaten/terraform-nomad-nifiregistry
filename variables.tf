@@ -90,6 +90,7 @@ variable "use_canary" {
   default     = false
 }
 
+# Git version control configuration
 variable "git_remote_url" {
   type = string
   description = "URL of the remote git repository. Must be HTTPS."
