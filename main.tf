@@ -1,9 +1,11 @@
 locals {
   datacenters = join(",", var.nomad_datacenters)
+  template_standalone = file("${path.module}/nomad/nifi_registry.hcl")
+  template_git = file("${path.module}/nomad/nifi_registry.hcl")
 }
 
 data "template_file" "nomad_job_nifi_registry" {
-  template = file("${path.module}/nomad/nifi_registry.hcl")
+  template = var.mode == "standalone" ? local.template_standalone : local.template_git
   vars = {
     datacenters     = local.datacenters
     namespace       = var.nomad_namespace

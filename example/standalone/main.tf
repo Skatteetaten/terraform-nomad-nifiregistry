@@ -6,10 +6,11 @@ module "nifi_registry" {
   nomad_namespace   = "default"
   nomad_host_volume = "persistence"
 
-  # nifi
+  # nifi registry
   service_name    = "nifi-registry"
   host            = "127.0.0.1"
   port            = 18080
+  mode            = "standalone"
   container_image = "apache/nifi-registry:0.8.0"
   use_host_volume = false
   use_canary      = false
