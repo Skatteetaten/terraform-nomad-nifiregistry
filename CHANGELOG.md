@@ -1,14 +1,10 @@
 # Changelog
 
-## [0.2.0 UNRELEASED]
+## [0.1.1 UNRELEASED]
 - Update vagrant-box, `version = ">= 0.9, < 0.10"` #17
 ### Added
 
 ### Changed
-- Updated Makefile with option to for nomad to switch to use standalone or standalone with git #21
-- updated example/standalone/main.tf with the same switch option #21
-- Updated variables.tf and main.tf with new mode-variable #21
-- Updated dev/ansible/01_run_terraform.yml #21
 
 ## [0.1.0]
 
