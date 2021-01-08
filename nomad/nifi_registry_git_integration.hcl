@@ -76,6 +76,8 @@ FLOW_PROVIDER_GIT_FLOW_STORAGE_DIRECTORY=${git_flow_storage_directory}
 FLOW_PROVIDER_GIT_REMOTE_TO_PUSH=${git_remote_to_push}
 FLOW_PROVIDER_GIT_REMOTE_ACCESS_USER=${git_access_user}
 FLOW_PROVIDER_GIT_REMOTE_ACCESS_PASSWORD=${git_access_password}
+GIT_CONFIG_USER_NAME=${git_user_name}
+GIT_CONFIG_USER_EMAIL=${git_user_email}
         EOH
 destination = "local/nifi_registry_config.env"
 env = true

@@ -26,6 +26,8 @@ data "template_file" "nomad_job_nifi_registry" {
     git_remote_to_push         = var.git_remote_to_push
     git_access_user            = var.git_access_user
     git_access_password        = var.git_access_password
+    git_user_name              = var.git_user_name
+    git_user_email             = var.git_user_email
   }
 }
 

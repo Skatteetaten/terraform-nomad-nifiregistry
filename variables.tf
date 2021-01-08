@@ -124,8 +124,22 @@ variable "git_access_user" {
 variable "git_access_password" {
   type        = string
   description = "Password"
-  default     = "password"
+  default     = ""
 }
+
+variable "git_user_name" {
+  type        = string
+  description = "Developer"
+  default     = "nifi-registry"
+}
+
+variable "git_user_email" {
+  type        = string
+  description = "Developer email"
+  default     = "nifi-registry@localhost"
+}
+
+
 
 
 
