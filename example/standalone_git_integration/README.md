@@ -1,6 +1,6 @@
 # NiFi Registry with GIT version control integration
 
-This example deploys a NiFi Registry container with git integration. 
+This example deploys a NiFi Registry container with git integration (Github). 
 Before running the example, some variables must be set beforehand. 
 
 | Variable   | Default value | Description |
@@ -17,6 +17,8 @@ Before running the example, some variables must be set beforehand.
 __NOTE!__ In this current version of the example, these variables above __must be written directly in the example [main.tf](main.tf#L26-L33)__.
 We are still working on to improve this step to a more secure and agile workflow.
 
+
+![img](../resources/images/nifi_registry_git_integration.png)
 
 Sources: https://github.com/michalklempa/docker-nifi-registry/
 
