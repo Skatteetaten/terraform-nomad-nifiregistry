@@ -92,39 +92,39 @@ variable "use_canary" {
 
 # Git version control configuration
 variable "git_remote_url" {
-  type = string
+  type        = string
   description = "URL of the remote git repository. Must be HTTPS."
-  default = "default"
+  default     = "default"
 }
 
 variable "git_checkout_branch" {
-  type = string
+  type        = string
   description = "Branch to checkout and track."
-  default = ""
+  default     = ""
 }
 
-variable "flow_provider_git_flow_storage_directory" {
-  type = string
+variable "git_flow_storage_directory" {
+  type        = string
   description = "Destination directory for clone."
-  default = "/opt/nifi-registry/flow-storage"
+  default     = "/opt/nifi-registry/flow-storage"
 }
 
-variable "flow_provider_git_remote_to_push" {
-  type = string
+variable "git_remote_to_push" {
+  type        = string
   description = "This variable is used in clone script to set origin name."
-  default = ""
+  default     = "origin"
 }
 
-variable "flow_provider_git_remote_access_user" {
-  type = string
+variable "git_access_user" {
+  type        = string
   description = "Username"
-  default = ""
+  default     = ""
 }
 
-variable "flow_provider_git_remote_access_password" {
-  type = string
-  description = "Username"
-  default = "password"
+variable "git_access_password" {
+  type        = string
+  description = "Password"
+  default     = "password"
 }
 
 

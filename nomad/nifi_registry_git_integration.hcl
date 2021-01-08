@@ -70,12 +70,12 @@ job "${service_name}" {
 template {
 data = <<EOH
 FLOW_PROVIDER=git
-GIT_REMOTE_URL=https://github.com/hannemariavister/versioned_flows.git
-GIT_CHECKOUT_BRANCH=master
-FLOW_PROVIDER_GIT_FLOW_STORAGE_DIRECTORY=/opt/nifi-registry/flow-storage-git
-FLOW_PROVIDER_GIT_REMOTE_TO_PUSH=origin
-FLOW_PROVIDER_GIT_REMOTE_ACCESS_USER=
-FLOW_PROVIDER_GIT_REMOTE_ACCESS_PASSWORD=
+GIT_REMOTE_URL=${git_remote_url}
+GIT_CHECKOUT_BRANCH=${git_checkout_branch}
+FLOW_PROVIDER_GIT_FLOW_STORAGE_DIRECTORY=${git_flow_storage_directory}
+FLOW_PROVIDER_GIT_REMOTE_TO_PUSH=${git_remote_to_push}
+FLOW_PROVIDER_GIT_REMOTE_ACCESS_USER=${git_access_user}
+FLOW_PROVIDER_GIT_REMOTE_ACCESS_PASSWORD=${git_access_password}
         EOH
 destination = "local/nifi_registry_config.env"
 env = true
