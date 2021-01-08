@@ -20,6 +20,7 @@ We are still working on to improve this step to a more secure and agile workflow
 
 ![img](../resources/images/nifi_registry_git_integration.png)
 
-Sources: https://github.com/michalklempa/docker-nifi-registry/
+Image: https://hub.docker.com/r/michalklempa/nifi-registry <br />
+Source code: https://github.com/michalklempa/docker-nifi-registry/
 
 
