@@ -14,4 +14,6 @@ Before running the example, some variables must be set beforehand.
 | `git_user_name`  | nifi-registry  |Developer|
 | `git_user_email`  | nifi-registry@localhost  |Developer email|
 
-These variables above __must be set directly in the example [main.tf](main.tf#L26-L33)__
+__NOTE!__ These variables above __must be written directly in the example [main.tf](main.tf#L26-L33)__.
+Later versions will this manually and not secure step be improved. 
+
