@@ -24,12 +24,12 @@ module "nifi_registry" {
   }
 
   # Git version control configuration
-  git_remote_url             = ""
-  git_checkout_branch        = ""
-  git_flow_storage_directory = ""
-  git_remote_to_push         = ""
-  git_access_user            = ""
-  git_access_password        = ""
-  git_user_name              = ""
-  git_user_email             = ""
+  git_remote_url             = "https://github.com/hannemariavister/versioned_flows.git"
+  git_checkout_branch        = "master"
+//  git_flow_storage_directory = ""
+//  git_remote_to_push         = ""
+  git_access_user            = "test"
+  git_access_password        = "password"
+//  git_user_name              = ""
+//  git_user_email             = ""
 }

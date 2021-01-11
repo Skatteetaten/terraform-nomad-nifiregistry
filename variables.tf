@@ -94,7 +94,7 @@ variable "use_canary" {
 variable "git_remote_url" {
   type        = string
   description = "URL of the remote git repository. Must be HTTPS."
-  default     = "default"
+  default     = ""
 }
 
 variable "git_checkout_branch" {
