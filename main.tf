@@ -1,7 +1,7 @@
 locals {
   datacenters = join(",", var.nomad_datacenters)
   template_standalone = file("${path.module}/nomad/nifi_registry.hcl")
-  template_git = file("${path.module}/nomad/nifi_registry.hcl")
+  template_git = file("${path.module}/nomad/nifi_registry_git_integration.hcl")
 }
 
 data "template_file" "nomad_job_nifi_registry" {
