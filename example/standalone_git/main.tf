@@ -11,6 +11,7 @@ module "nifi_registry" {
   host            = "127.0.0.1"
   port            = 18080
   container_image = "michalklempa/nifi-registry:0.8.0"
+  mode            = "git"
   use_host_volume = false
   use_canary      = false
   resource = {
@@ -23,12 +24,12 @@ module "nifi_registry" {
   }
 
   # Git version control configuration
-  git_remote_url             = ""
-  git_checkout_branch        = ""
-  git_flow_storage_directory = ""
-  git_remote_to_push         = ""
-  git_access_user            = ""
-  git_access_password        = ""
-  git_user_name              = ""
-  git_user_email             = ""
+  git_remote_url             = "https://github.com/hannemariavister/versioned_flows.git"
+  git_checkout_branch        = "master"
+  git_flow_storage_directory = "/opt/nifi-registry/flow-storage-git"
+  git_remote_to_push         = "origin"
+  git_access_user            = "hannemariavister"
+  git_access_password        = "5bf1bc1e0d6b0ae66e91ab44e7afda1d69506956"
+  git_user_name              = "Hanne Maria"
+  git_user_email             = "hannemaria.vister@gmail.com"
 }
