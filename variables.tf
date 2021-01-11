@@ -15,6 +15,16 @@ variable "nomad_host_volume" {
   default     = "persistence"
 }
 
+variable "mode" {
+  type        = string
+  description = "Switch for nomad jobs to use standalone or standalone with git deployment"
+  default     = "standalone"
+  validation {
+    condition     = var.mode == "standalone" || var.mode == "git"
+    error_message = "Valid modes: \"git\" or \"standalone\"."
+  }
+}
+
 # Nifi registry
 variable "service_name" {
   type        = string

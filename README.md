@@ -35,10 +35,15 @@ Please follow [this section in original template](https://github.com/fredrikhgre
 All software is provided and run with docker. See the [Makefile](Makefile) for inspiration.
 
 ## Usage
-The following command will run nifi registry in the [example/standalone](example/standalone) folder.
+The following command will run nifi registry in the [example/standalone_git](example/standalone) folder.
 ```sh
 make up
 ```
+and
+```sh
+make up-standalone
+```
+will run nifi registry in the [example/standalone](example/standalone) folder.
 
 ### Verifying setup
 You can verify that Nifi registry ran successful by checking the Nifi registry UI.
@@ -68,6 +73,7 @@ module "nifi_registry" {
    service_name    = "nifi-registry"
    host            = "127.0.0.1"
    port            = 18080
+   mode            = "standalone"
    container_image = "apache/nifi-registry:0.8.0"
    use_host_volume = false
    use_canary      = false
@@ -90,7 +96,8 @@ module "nifi_registry" {
 | nomad\_host\_volume | Nomad host volume | string | "persistence" | no |
 | service\_name | nifi registry service name | string | "nifi-registry" | yes |
 | host | Nifi registry host | string | "127.0.0.1" | yes |
-| port | nifi registry container port | number | 18080 | yes |
+| port | Nifi registry container port | number | 18080 | yes |
+| mode | Switch for Nomad to use standalone or standalone with git deployment | string | "standalone" | no |
 | container\_image | nifi registry container image | string | "apache/nifi-registry:0.8.0" | yes |
 | resource | Resource allocations for cpu and memory | obj(number, number)| { <br> cpu = 500, <br> memory = 1024 <br> } | no |
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
