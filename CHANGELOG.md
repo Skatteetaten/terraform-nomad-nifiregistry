@@ -12,7 +12,7 @@
 - Updated dev/ansible/01_run_terraform.yml #21
 
 ## [0.1.0]
-git status
+
 ### Added
 - Create a working example for nifi registry #1
 - Make up builds vagrant box with nifi registry #3
