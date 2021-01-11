@@ -35,7 +35,7 @@ Please follow [this section in original template](https://github.com/fredrikhgre
 All software is provided and run with docker. See the [Makefile](Makefile) for inspiration.
 
 ## Usage
-The following command will run nifi registry in the [example/standalone_git](example/standalone) folder.
+The following command will run nifi registry in the [example/standalone_git](example/standalone_git) folder. (__NOTE!__ Please read [README.md](example/standalone_git/README.md) before executing the example)
 ```sh
 make up
 ```
