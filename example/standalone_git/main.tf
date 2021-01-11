@@ -4,7 +4,7 @@ module "nifi_registry" {
   # nomad
   nomad_datacenters = ["dc1"]
   nomad_namespace   = "default"
-  nomad_host_volume = "persistence"
+
 
   # nifi
   service_name    = "nifi-registry"
@@ -12,7 +12,6 @@ module "nifi_registry" {
   port            = 18080
   container_image = "michalklempa/nifi-registry:0.8.0"
   mode            = "git"
-  use_host_volume = false
   use_canary      = false
   resource = {
     cpu    = 500
@@ -26,10 +25,10 @@ module "nifi_registry" {
   # Git version control configuration
   git_remote_url             = "https://github.com/hannemariavister/versioned_flows.git"
   git_checkout_branch        = "master"
-//  git_flow_storage_directory = ""
-//  git_remote_to_push         = ""
+  git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
+  git_remote_to_push         = "origin"
   git_access_user            = "test"
   git_access_password        = "password"
-//  git_user_name              = ""
-//  git_user_email             = ""
+  git_user_name              = "nifi-registry"
+  git_user_email             = "nifi-registry@localhost"
 }

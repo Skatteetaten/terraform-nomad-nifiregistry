@@ -9,11 +9,6 @@ variable "nomad_namespace" {
   description = "[Enterprise] Nomad namespace"
   default     = "default"
 }
-variable "nomad_host_volume" {
-  type        = string
-  description = "Nomad Host Volume"
-  default     = "persistence"
-}
 
 variable "mode" {
   type        = string
@@ -76,12 +71,6 @@ variable "resource_proxy" {
     condition     = var.resource_proxy.cpu >= 200 && var.resource_proxy.memory >= 128
     error_message = "Proxy resource must be at least: cpu=200, memory=128."
   }
-}
-
-variable "use_host_volume" {
-  type        = bool
-  description = "Switch for nomad jobs to use host volume feature"
-  default     = false
 }
 
 variable "use_canary" {
