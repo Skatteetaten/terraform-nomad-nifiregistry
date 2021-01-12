@@ -103,12 +103,12 @@ module "nifi_registry" {
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
 | use\_host\_volume | Switch to enable or disable host volume | bool | false | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
-| git_remote_url  |Git integration: URL of the remote git repository. Must be HTTPS. | string | " " | no|
-| git_checkout_branch  |Git integration: Branch to checkout and track. If none is specified, repository is only cloned and no branch switching is done.| string | " " | no|
-| git_flow_storage_directory  |Git integration: Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.| string |/opt/nifi-registry/flow-storage  | no|
-| git_remote_to_push  |Git integration: This variable is used in clone script to set origin name using `-o, --origin <name> use <name> instead of 'origin' to track upstream`. It is also used in NiFi Registry configuration.| string |origin | no|
-| git_access_user  |Git integration: Username|  string | " " | no|
-| git_access_password  |Git integration: Password|  string | " " | no|
+| git_remote_url  |Git integration: URL of the remote git repository. Must be HTTPS. | string | " " | yes|
+| git_checkout_branch  |Git integration: Branch to checkout and track| string | master | yes|
+| git_flow_storage_directory  |Git integration: Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.| string |/opt/nifi-registry/flow-storage  | yes|
+| git_remote_to_push  |Git integration: This variable is used in clone script to set origin name using `-o, --origin <name> use <name> instead of 'origin' to track upstream`. It is also used in NiFi Registry configuration.| string |origin | yes|
+| git_access_user  |Git integration: Username|  string | " " | yes|
+| git_access_password  |Git integration: Password|  string | " " | yes|
 | git_user_name  |Git integration: Developer|string |nifi-registry  |no|
 | git_user_email |Git integration: Developer email| string |nifi-registry@localhost|no|
 

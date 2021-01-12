@@ -107,7 +107,7 @@ variable "git_remote_to_push" {
 variable "git_access_user" {
   type        = string
   description = "Username"
-  //default     = ""
+  default     = ""
 }
 
 variable "git_access_password" {

@@ -27,8 +27,8 @@ module "nifi_registry" {
   git_checkout_branch        = "master"
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
-  git_access_user            = "test"
-  git_access_password        = "password"
+  git_access_user            = "user"
+  git_access_password        = "thisisnotmypassword"
   git_user_name              = "nifi-registry"
   git_user_email             = "nifi-registry@localhost"
 }
