@@ -9,18 +9,13 @@ variable "nomad_namespace" {
   description = "[Enterprise] Nomad namespace"
   default     = "default"
 }
-variable "nomad_host_volume" {
-  type        = string
-  description = "Nomad Host Volume"
-  default     = "persistence"
-}
 
 variable "mode" {
   type        = string
   description = "Switch for nomad jobs to use standalone or standalone with git deployment"
   default     = "standalone"
   validation {
-    condition     = var.mode == "standalone" || var.mode == "git"
+    condition     = var.mode == "standalone" || var.mode == "standalone_git"
     error_message = "Valid modes: \"git\" or \"standalone\"."
   }
 }
@@ -78,14 +73,63 @@ variable "resource_proxy" {
   }
 }
 
-variable "use_host_volume" {
-  type        = bool
-  description = "Switch for nomad jobs to use host volume feature"
-  default     = false
-}
-
 variable "use_canary" {
   type        = bool
   description = "Uses canary deployment for Nifi"
   default     = false
 }
+
+# Git version control configuration
+variable "git_remote_url" {
+  type        = string
+  description = "URL of the remote git repository. Must be HTTPS."
+  default     = ""
+}
+
+variable "git_checkout_branch" {
+  type        = string
+  description = "Branch to checkout and track."
+  default     = ""
+}
+
+variable "git_flow_storage_directory" {
+  type        = string
+  description = "Destination directory for clone."
+  default     = "/opt/nifi-registry/flow-storage"
+}
+
+variable "git_remote_to_push" {
+  type        = string
+  description = "This variable is used in clone script to set origin name."
+  default     = "origin"
+}
+
+variable "git_access_user" {
+  type        = string
+  description = "Username"
+  default     = ""
+}
+
+variable "git_access_password" {
+  type        = string
+  description = "Password"
+  default     = ""
+}
+
+variable "git_user_name" {
+  type        = string
+  description = "Developer"
+  default     = "nifi-registry"
+}
+
+variable "git_user_email" {
+  type        = string
+  description = "Developer email"
+  default     = "nifi-registry@localhost"
+}
+
+
+
+
+
+
