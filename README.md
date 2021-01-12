@@ -101,7 +101,7 @@ module "nifi_registry" {
 | resource | Resource allocations for cpu and memory | obj(number, number)| { <br> cpu = 500, <br> memory = 1024 <br> } | no |
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
-| git_remote_url  |Git integration: URL of the remote git repository. Must be HTTPS. | string | " " | yes|
+| git_remote_url  |Git integration: URL of the remote git repository. | string | " " | yes|
 | git_checkout_branch  |Git integration: Branch to checkout and track. | string | " " | yes|
 | git_flow_storage_directory  |Git integration: Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.| string |/opt/nifi-registry/flow-storage  | yes|
 | git_remote_to_push  |Git integration: This variable is used in clone script to set origin name using `-o, --origin <name> use <name> instead of 'origin' to track upstream`. It is also used in NiFi Registry configuration.| string |origin | yes|
