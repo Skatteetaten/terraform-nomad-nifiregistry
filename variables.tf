@@ -89,7 +89,7 @@ variable "git_remote_url" {
 variable "git_checkout_branch" {
   type        = string
   description = "Branch to checkout and track."
-  default     = "master"
+  default     = ""
 }
 
 variable "git_flow_storage_directory" {
