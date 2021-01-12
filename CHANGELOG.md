@@ -1,6 +1,7 @@
 # Changelog
+## [0.2.1 UNRELEASED]
 
-## [0.2.0 UNRELEASED]
+## [0.2.0]
 
 ### Added
 - Added an example `standalone_git` with a NiFi Registry container integrated with GIT version control #20
