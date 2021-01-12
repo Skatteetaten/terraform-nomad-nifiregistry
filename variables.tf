@@ -15,7 +15,7 @@ variable "mode" {
   description = "Switch for nomad jobs to use standalone or standalone with git deployment"
   default     = "standalone"
   validation {
-    condition     = var.mode == "standalone" || var.mode == "git"
+    condition     = var.mode == "standalone" || var.mode == "standalone_git"
     error_message = "Valid modes: \"git\" or \"standalone\"."
   }
 }

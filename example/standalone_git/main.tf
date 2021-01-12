@@ -11,7 +11,7 @@ module "nifi_registry" {
   host            = "127.0.0.1"
   port            = 18080
   container_image = "michalklempa/nifi-registry:0.8.0"
-  mode            = "git"
+  mode            = "standalone_git"
   use_canary      = false
   resource = {
     cpu    = 500

@@ -3,7 +3,7 @@
 ## [0.2.0 UNRELEASED]
 
 ### Added
-- Add an example `standalone_git` with a NiFi Registry container integrated with GIT version control #20
+- Added an example `standalone_git` with a NiFi Registry container integrated with GIT version control #20
 
 ### Changed
 - Update vagrant-box, `version = ">= 0.9, < 0.10"` #17
