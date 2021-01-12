@@ -93,7 +93,6 @@ module "nifi_registry" {
 |------|-------------|------|---------|:--------:|
 | nomad\_datacenters | Nomad data centers | list(string) | ["dc1"] | yes |
 | nomad\_namespace | [Enterprise] Nomad namespace | string | "default" | yes |
-| nomad\_host\_volume | Nomad host volume | string | "persistence" | no |
 | service\_name | nifi registry service name | string | "nifi-registry" | yes |
 | host | Nifi registry host | string | "127.0.0.1" | yes |
 | port | Nifi registry container port | number | 18080 | yes |
@@ -101,10 +100,9 @@ module "nifi_registry" {
 | container\_image | nifi registry container image | string | "apache/nifi-registry:0.8.0" | yes |
 | resource | Resource allocations for cpu and memory | obj(number, number)| { <br> cpu = 500, <br> memory = 1024 <br> } | no |
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
-| use\_host\_volume | Switch to enable or disable host volume | bool | false | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
 | git_remote_url  |Git integration: URL of the remote git repository. Must be HTTPS. | string | " " | yes|
-| git_checkout_branch  |Git integration: Branch to checkout and track| string | master | yes|
+| git_checkout_branch  |Git integration: Branch to checkout and track. | string | " " | yes|
 | git_flow_storage_directory  |Git integration: Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.| string |/opt/nifi-registry/flow-storage  | yes|
 | git_remote_to_push  |Git integration: This variable is used in clone script to set origin name using `-o, --origin <name> use <name> instead of 'origin' to track upstream`. It is also used in NiFi Registry configuration.| string |origin | yes|
 | git_access_user  |Git integration: Username|  string | " " | yes|
