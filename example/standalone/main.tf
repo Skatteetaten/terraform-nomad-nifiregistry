@@ -4,7 +4,6 @@ module "nifi_registry" {
   # nomad
   nomad_datacenters = ["dc1"]
   nomad_namespace   = "default"
-  nomad_host_volume = "persistence"
 
   # nifi registry
   service_name    = "nifi-registry"
@@ -12,7 +11,6 @@ module "nifi_registry" {
   port            = 18080
   mode            = "standalone"
   container_image = "apache/nifi-registry:0.8.0"
-  use_host_volume = false
   use_canary      = false
   resource = {
     cpu    = 500

@@ -4,5 +4,4 @@ The current directory contains terraform related files that use the module in ..
 
 ![img](../resources/images/nifi_registry_standalone.png)
 
-Image: https://hub.docker.com/r/michalklempa/nifi-registry <br />
-Source code: https://github.com/michalklempa/docker-nifi-registry/
+
