@@ -1,6 +1,13 @@
 # Changelog
 ## [0.2.1 UNRELEASED]
 
+### Added
+- Added README.md for example/standalone #22
+
+### Changed
+- Updated example/standalone/main.tf #30
+- Updated example/README.md #22
+
 ## [0.2.0]
 
 ### Added
