@@ -93,3 +93,12 @@ pre-commit: check_for_docker_binary check_for_terraform_binary
 proxy-nifi-reg:
 	consul intention create -token=master nifi-registry-local nifi-registry
 	consul connect proxy -token master -service nifi-registry-local -upstream nifi-registry:18080 -log-level debug
+
+
+
+up-test: update-box custom_ca
+ifeq ($(GITHUB_ACTIONS),true) # Always set to true when GitHub Actions is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub Actions.
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} ANSIBLE_ARGS='--extra-vars "\"ci_test=true mode=standalone_git github=$(github)\""' vagrant up --provision
+else
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
+endif
