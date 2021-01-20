@@ -1,5 +1,7 @@
 # Changelog
-## [0.2.1 UNRELEASED]
+## [0.2.2 UNRELEASED]
+
+## [0.2.1]
 
 ### Added
 - Added README.md for example/standalone #22
