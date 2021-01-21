@@ -23,8 +23,8 @@ module "nifi_registry" {
   }
 
   # Git version control configuration
-  git_remote_url             = "https://github.com/hannemariavister/versioned_flows.git"
-  git_checkout_branch        = "master"
+  git_remote_url             = yamldecode(file("../../dev/ansible/02_set_variables.yml"))[0]["set_fact"]["git_remote_url"]
+  git_checkout_branch        = yamldecode(file("../../dev/ansible/02_set_variables.yml"))[0]["set_fact"]["git_checkout_branch"]
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
   git_access_user            = "user"
