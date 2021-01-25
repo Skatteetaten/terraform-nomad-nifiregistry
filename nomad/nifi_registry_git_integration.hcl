@@ -70,7 +70,6 @@ job "${service_name}" {
         image = "${image}"
 
       }
-
       template {
 destination = "secrets/.envs"
 env = true
