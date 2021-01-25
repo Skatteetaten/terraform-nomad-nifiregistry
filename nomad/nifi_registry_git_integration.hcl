@@ -63,24 +63,28 @@ job "${service_name}" {
     task "nifi-registry" {
       driver = "docker"
 
+      vault {
+        policies = "${vault_kv_policy_name}"
+      }
       config {
         image = "${image}"
 
       }
-template {
-data = <<EOH
+
+      template {
+destination = "secrets/.envs"
+env = true
+data        = <<EOF
+{{ with secret "${vault_kv_path}" }}
 FLOW_PROVIDER=git
-GIT_REMOTE_URL=${git_remote_url}
-GIT_CHECKOUT_BRANCH=${git_checkout_branch}
+GIT_REMOTE_URL={{ key "github/repo" }}
+GIT_CHECKOUT_BRANCH={{ key "github/branch" }}
 FLOW_PROVIDER_GIT_FLOW_STORAGE_DIRECTORY=${git_flow_storage_directory}
 FLOW_PROVIDER_GIT_REMOTE_TO_PUSH=${git_remote_to_push}
-FLOW_PROVIDER_GIT_REMOTE_ACCESS_USER=${git_access_user}
-FLOW_PROVIDER_GIT_REMOTE_ACCESS_PASSWORD=${git_access_password}
-GIT_CONFIG_USER_NAME=${git_user_name}
-GIT_CONFIG_USER_EMAIL=${git_user_email}
-        EOH
-destination = "local/nifi_registry_config.env"
-env = true
+FLOW_PROVIDER_GIT_REMOTE_ACCESS_USER="{{ .Data.data.${vault_kv_field_user} }}"
+FLOW_PROVIDER_GIT_REMOTE_ACCESS_PASSWORD="{{ .Data.data.${vault_kv_field_password} }}"
+{{ end }}
+EOF
 }
       resources {
         cpu    = "${cpu}" # MHz

@@ -26,6 +26,10 @@ data "template_file" "nomad_job_nifi_registry" {
     git_access_password        = var.git_access_password
     git_user_name              = var.git_user_name
     git_user_email             = var.git_user_email
+    vault_kv_policy_name       = var.vault_secret.vault_kv_policy_name
+    vault_kv_path              = var.vault_secret.vault_kv_path
+    vault_kv_field_user        = var.vault_secret.vault_kv_field_user
+    vault_kv_field_password    = var.vault_secret.vault_kv_field_password
   }
 }
 

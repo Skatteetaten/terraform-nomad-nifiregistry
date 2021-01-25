@@ -128,7 +128,21 @@ variable "git_user_email" {
   default     = "nifi-registry@localhost"
 }
 
-
+variable "vault_secret" {
+  type = object({
+    vault_kv_policy_name    = string,
+    vault_kv_path           = string,
+    vault_kv_field_user     = string,
+    vault_kv_field_password = string
+  })
+  description = "Set of properties to be able to fetch secret from vault"
+  default = {
+    vault_kv_policy_name    = "kv-secret"
+    vault_kv_path           = "secret/github"
+    vault_kv_field_user     = "git_access_user"
+    vault_kv_field_password = "git_access_password"
+  }
+}
 
 
 
