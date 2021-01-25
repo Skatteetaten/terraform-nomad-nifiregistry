@@ -15,7 +15,6 @@ job "${service_name}" {
       auto_revert       = true
     %{ endif }
     stagger           = "30s"
-
   }
 
   group "servers" {
@@ -25,7 +24,6 @@ job "${service_name}" {
       port "expose_check" {
         to = -1
       }
-
     }
     service {
       name = "${service_name}"
@@ -62,13 +60,11 @@ job "${service_name}" {
 
     task "nifi-registry" {
       driver = "docker"
-
       vault {
         policies = "${vault_kv_policy_name}"
       }
       config {
         image = "${image}"
-
       }
       template {
 destination = "secrets/.envs"
