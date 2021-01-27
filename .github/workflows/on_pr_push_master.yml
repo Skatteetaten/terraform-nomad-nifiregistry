@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Super-Linter
-        uses: github/super-linter@latest
+        #        todo: use github/super-linter when will be resolved https://github.com/github/super-linter/issues/708
+        uses: Neha-Sinha2305/super-linter@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ANSIBLE: true
@@ -62,9 +63,9 @@ jobs:
         run: |
           if [ "$test_consul_acl" == 'consul_acl_enabled' ]
           then
-              echo "ENVKEY_consul_acl=true" >> $GITHUB_ENV
+              echo "::set-output name=consul_acl::true"
           else
-              echo "ENVKEY_consul_acl=false" >> $GITHUB_ENV
+              echo "::set-output name=consul_acl::false"
           fi
         env:
           test_consul_acl: ${{ matrix.consul_acl }}
@@ -74,9 +75,9 @@ jobs:
         run: |
           if [ "$test_consul_acl_default_policy" == 'consul_acl_allow' ]
           then
-              echo "ENVKEY_consul_acl_default_policy=allow" >> $GITHUB_ENV
+              echo "::set-output name=default_policy::allow"
           else
-              echo "ENVKEY_consul_acl_default_policy=deny" >> $GITHUB_ENV
+              echo "::set-output name=default_policy::deny"
           fi
         env:
           test_consul_acl_default_policy: ${{ matrix.consul_acl_default_policy }}
@@ -86,9 +87,9 @@ jobs:
         run: |
           if [ "$test_nomad_acl" == 'nomad_acl_enabled' ]
           then
-              echo "ENVKEY_nomad_acl=true" >> $GITHUB_ENV
+              echo "::set-output name=nomad_acl::true"
           else
-              echo "ENVKEY_nomad_acl=false" >> $GITHUB_ENV
+              echo "::set-output name=nomad_acl::false"
           fi
         env:
           test_nomad_acl: ${{ matrix.nomad_acl }}
@@ -98,13 +99,13 @@ jobs:
         run: |
           if [ "$test_hashicorp_binary" == 'hashicorp_oss' ]
           then
-              echo "ENVKEY_consul_enterprise=false" >> $GITHUB_ENV
-              echo "ENVKEY_nomad_enterprise=false" >> $GITHUB_ENV
-              echo "ENVKEY_vault_enterprise=false" >> $GITHUB_ENV
+              echo "::set-output name=consul_enterprise::false"
+              echo "::set-output name=nomad_enterprise::false"
+              echo "::set-output name=vault_enterprise::false"
           else
-              echo "ENVKEY_consul_enterprise=true" >> $GITHUB_ENV
-              echo "ENVKEY_nomad_enterprise=true" >> $GITHUB_ENV
-              echo "ENVKEY_vault_enterprise=true" >> $GITHUB_ENV
+              echo "::set-output name=consul_enterprise::true"
+              echo "::set-output name=nomad_enterprise::true"
+              echo "::set-output name=vault_enterprise::true"
           fi
         env:
           test_hashicorp_binary: ${{ matrix.hashicorp_binary }}
@@ -114,6 +115,12 @@ jobs:
         run: python .github/action/create-env.py
         env:
           ENVKEY_env_override: true
+          ENVKEY_consul_acl: ${{ steps.consul_acl.outputs.consul_acl }}
+          ENVKEY_consul_acl_default_policy: ${{ steps.consul_acl_default_policy.outputs.default_policy }}
+          ENVKEY_nomad_acl: ${{ steps.nomad_acl.outputs.nomad_acl }}
+          ENVKEY_consul_enterprise: ${{ steps.hashicorp_binary.outputs.consul_enterprise }}
+          ENVKEY_nomad_enterprise: ${{ steps.hashicorp_binary.outputs.nomad_enterprise }}
+          ENVKEY_vault_enterprise: ${{ steps.hashicorp_binary.outputs.vault_enterprise }}
           FILE_NAME: template_example/.env_override
 
       - name: Run make template_example
@@ -125,6 +132,12 @@ jobs:
         run: python .github/action/create-env.py
         env:
           ENVKEY_env_override: true
+          ENVKEY_consul_acl: ${{ steps.consul_acl.outputs.consul_acl }}
+          ENVKEY_consul_acl_default_policy: ${{ steps.consul_acl_default_policy.outputs.default_policy }}
+          ENVKEY_nomad_acl: ${{ steps.nomad_acl.outputs.nomad_acl }}
+          ENVKEY_consul_enterprise: ${{ steps.hashicorp_binary.outputs.consul_enterprise }}
+          ENVKEY_nomad_enterprise: ${{ steps.hashicorp_binary.outputs.nomad_enterprise }}
+          ENVKEY_vault_enterprise: ${{ steps.hashicorp_binary.outputs.vault_enterprise }}
           FILE_NAME: .env_override
 
       - name: Run make test
@@ -136,10 +149,10 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'major') ||
       contains(github.event.pull_request.labels.*.name, 'minor') ||
       contains(github.event.pull_request.labels.*.name, 'patch')
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       bump: ${{ steps.bump.outputs.match }}
-      next_version: ${{ steps.next_version.outputs.version }}
+      next_version: ${{ steps.split_tag.outputs._0 }}
       log_entry: ${{ steps.changelog_reader.outputs.log_entry }}
 
     steps:
@@ -150,12 +163,19 @@ jobs:
         with:
           allowed: major,minor,patch
 
-      - id: next_version
-        uses: zwaldowski/semver-release-action@v1
+      - name: Bump version and push tag
+        id: next_version
+        uses: anothrNick/github-tag-action@1.26.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: ${{ steps.bump.outputs.match }}
+          DRY_RUN: true
+
+      - uses: rishabhgupta/split-by@v1
+        id: split_tag
         with:
-          dry_run: true
-          bump: ${{ steps.bump.outputs.match }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          string: ${{ steps.next_version.outputs.new_tag }}
+          split-by: '-'
 
       - name: Find and replace
         run: python .github/action/find-replace.py
