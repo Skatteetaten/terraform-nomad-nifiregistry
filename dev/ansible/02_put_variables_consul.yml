@@ -2,11 +2,11 @@
   shell: consul kv put github/repo "{{ repo }}"
   run_once: true
   environment:
-    CONSUL_HTTP_ADDR: "http://127.0.0.1:8500/"
+    CONSUL_HTTP_ADDR: http://127.0.0.1:8500
     CONSUL_HTTP_TOKEN: "master"
 - name: Put branch value in Consul Key Value Store
   shell: consul kv put github/branch "{{ branch }}"
   run_once: true
   environment:
-    CONSUL_HTTP_ADDR: "http://127.0.0.1:8200"
+    CONSUL_HTTP_ADDR: http://127.0.0.1:8500
     CONSUL_HTTP_TOKEN: "master"
