@@ -55,7 +55,7 @@ check-params:
 	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined.")
 	@[ "${user}" ] || (  echo ">> The parameter user is not defined.")
 	@[ "${token}" ] || ( echo ">> The parameter token is not defined." )
-	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (exit )
+	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (exit 1 )
 
 test-standalone: clean up-standalone
 
