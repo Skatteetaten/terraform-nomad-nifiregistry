@@ -56,7 +56,7 @@ vault kv get -field='git_access_password' secret/github
 ```
 
 ## Consul Key Value Store
-The parameter `repo` and `branch` are also sent by parameters from CLI. We use Consul Key Value Store for storing these variables. 
+The `repo` and `branch` are also sent by parameters from CLI. We use Consul Key Value Store for storing these variables. 
 
 To get the `repo` and `branch` from Consul visit [Consul-UI](http://localhost:8500/ui/dc1/kv).
 Alternatively, you can ssh into the vagrant box with `vagrant ssh` , and use the consul binary to get the `repo` and `branch`. See the following commands:
