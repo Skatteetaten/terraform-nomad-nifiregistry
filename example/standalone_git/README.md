@@ -1,6 +1,6 @@
 # NiFi Registry with GIT version control integration
 
-This example deploys a NiFi Registry container with git integration (Github). 
+This example deploys a NiFi Registry container with GIT integration (GitHub). 
 
 The variables below define the GIT configuration for NiFi Registry: 
 
