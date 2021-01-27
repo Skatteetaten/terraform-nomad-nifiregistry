@@ -35,7 +35,7 @@ Example of use:
 make up repo=https://github.com/hannemariavister/versioned_flows.git \ 
         branch=master \
         user=hannemariavister \ 
-        token=thisisnotmypersonaltoken  
+        token=thisisnotmypersonalgithubtoken  
 ```
 
 (NOTE, in later releases we would let our users have the option to define these variables directly in an example or from command line, which could be a good feature for testing purpose.)
