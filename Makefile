@@ -54,7 +54,7 @@ check-params:
 	@[ "${repo}" ] || ( echo ">> The parameter repo is not defined. repo=<GitHub-repository, use HTTPS>" )
 	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined. branch=<branch to checkout and track>")
 	@[ "${user}" ] || (  echo ">> The parameter user is not defined. user=<GitHub username>")
-	@[ "${token}" ] || ( echo ">> The parameter token is not defined. token=<personal token from GitHub" )
+	@[ "${token}" ] || ( echo ">> The parameter token is not defined. token=<personal token from GitHub>" )
 	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (echo "See README.md for more details and example: https://github.com/hannemariavister/terraform-nomad-nifiregistry/blob/master/example/standalone_git/README.md" ; exit 1 )
 
 test-standalone: clean up-standalone
