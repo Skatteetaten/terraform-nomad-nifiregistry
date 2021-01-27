@@ -42,7 +42,7 @@ make up repo=https://github.com/hannemariavister/versioned_flows.git \
 
 ## Secrets & Credentials 
 The GitHub user and GitHub personal token (sent as parameters by respectively `user` and `token` from CLI) 
-are store as `git_access_user` and `git_access_password` and put `/secret/data/github` inside Vault.
+are store as `git_access_user` and `git_access_password` and put in `/secret/data/github` inside Vault.
 
 To get the `git_access_user` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal 
 the `git_access_user` and `git_access_password` in /secret/github. 
