@@ -26,12 +26,12 @@ The variable names have been abbreviated, such as:
 |`git_access_password`  | `token` |
 
 Example with description of the parameters:
-```bash
+```sh
 make up repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub> 
 ```
 
 Example of use:
-```bash
+```sh
 make up repo=https://github.com/hannemariavister/versioned_flows.git \ 
         branch=master \
         user=hannemariavister \ 
@@ -47,7 +47,7 @@ are store as `git_access_user` and `git_access_password` and put `/secret/data/g
 To get the `git_access_user` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal 
 the `git_access_user` and `git_access_password` in /secret/github. 
 Alternatively, you can ssh into the vagrant box with `vagrant ssh`, and use the vault binary to get the `git_access_user` and `git_access_password`. See the following commands:
-```
+```sh
 # get git_access_user
 vault kv get -field='git_access_user' secret/github
 
@@ -60,7 +60,7 @@ The `repo` and `branch` are also sent as parameters from CLI. We use Consul Key 
 
 To get the `repo` and `branch` from Consul visit [Consul-UI](http://localhost:8500/ui/dc1/kv).
 Alternatively, you can ssh into the vagrant box with `vagrant ssh` , and use the consul binary to get the `repo` and `branch`. See the following commands:
-```
+```sh
 # get repo
 consul kv get github/repo
 
