@@ -2,11 +2,11 @@
   shell: consul kv put github/repo "{{ repo }}"
   run_once: true
   environment:
-    CONSUL_ADDR: "{{ lookup('env', 'CONSUL_ADDR') }}"
-    CONSUL_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
+    CONSUL_ADDR: "http://localhost:8500/"
+    CONSUL_TOKEN: "master"
 - name: Put branch value in Consul Key Value Store
   shell: consul kv put github/branch "{{ branch }}"
   run_once: true
   environment:
-    CONSUL_ADDR: "{{ lookup('env', 'CONSUL_ADDR') }}"
-    CONSUL_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
+    CONSUL_ADDR: "http://localhost:8500/"
+    CONSUL_TOKEN: "master"
