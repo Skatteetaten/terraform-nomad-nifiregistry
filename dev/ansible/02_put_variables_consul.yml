@@ -1,0 +1,6 @@
+- name: Put repo value in Consul Key Value Store
+  shell: consul kv put github/repo "{{ repo }}"
+  run_once: true
+- name: Put branch value in Consul Key Value Store
+  shell: consul kv put github/branch "{{ branch }}"
+  run_once: true

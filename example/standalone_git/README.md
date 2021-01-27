@@ -44,7 +44,7 @@ make up repo=https://github.com/hannemariavister/versioned_flows.git \
 The GitHub user and GitHub personal token (send as parameters by respectively `user` and `token` from CLI) 
 are store as `git_access_user` and `git_access_password` and put `/secret/data/github` inside Vault.
 
-To get the `git_access_user` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal 
+To get the `git_access_user` and `git_access_password` from Vault you can login to the [Consul-UI](http://localhost:8500/) with token `master` and reveal 
 the `git_access_user` and `git_access_password` in /secret/github. 
 Alternatively, you can ssh into the vagrant box with vagrant ssh, and use the vault binary to get the `git_access_user` and `git_access_password`. See the following commands:
 ```
@@ -58,7 +58,8 @@ vault kv get -field='git_access_password' secret/github
 ## Consul Key Value Store
 The parameter `repo` and `branch` are also sent by parameters from CLI. We use Consul Key Value Store for storing these variables. 
 
-
+To get the `repo` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal
+the `git_access_user` and `git_access_password` in /secret/github.
 
 ![img](../resources/images/nifi_registry_git_integration.png)
 

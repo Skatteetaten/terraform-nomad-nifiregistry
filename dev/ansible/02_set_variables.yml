@@ -1,4 +1,0 @@
-- name: Set variables
-  set_fact:
-    git_remote_url: "{{ repo }}"
-    git_checkout_branch: "{{ branch }}"
