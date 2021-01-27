@@ -50,16 +50,13 @@ else
 	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
 endif
 
-COUNTER = 0
+
 check-params:
-	@[ "${repo}" ] || ( COUNTER += 0; echo ">> The parameter repo is not defined" )
-	@[ "${branch}" ] || ( COUNTER++; echo ">> The parameter branch is not defined" )
-	@[ "${user}" ] || ( COUNTER++; echo ">> The parameter user is not defined")
-	@[ "${token}" ] || ( COUNTER += 0; echo ">> The parameter token is not defined" )
-ifeq ($(shell expr COUNTER \<= 4), 1)
-	"$(COUNTER) is value"
-	exit 1
-endif
+	@[ "${repo}" ] || ( echo ">> The parameter repo is not defined." )
+	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined.")
+	@[ "${user}" ] || (  echo ">> The parameter user is not defined.")
+	@[ "${token}" ] || ( echo ">> The parameter token is not defined." )
+	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (exit )
 
 
 test-standalone: clean up-standalone
