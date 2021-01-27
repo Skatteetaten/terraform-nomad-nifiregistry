@@ -2,10 +2,10 @@
 ## [0.3.0 UNRELEASED]
 
 ### Added
-- Pass arguments to Makefile with variables for GitHub authentication #35
+- Customized Makefile to receive arguments for GitHub authentication #35
 - Added secrets (GitHub user and GitHub personal token) to Vault by Ansible playbooks (`terraform-nomad-nifiregistry/dev/ansible` ) #35
 - Added variables (repo and branch) to Consul Key Value Store #35 
-- Create nomad-jobs for retrieving secrets from Vault and variables from Consul Key Value Store #33
+- Created nomad-jobs for retrieving secrets from Vault and variables from Consul Key Value Store #33
 
 ### Updated 
 - Updated tests with parameters #39
