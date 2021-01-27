@@ -41,7 +41,7 @@ make up repo=https://github.com/hannemariavister/versioned_flows.git \
 (NOTE, in later releases we would let our users have the option to define these variables directly in an example or from command line, which could be a good feature for testing purpose.)
 
 ## Secrets & Credentials 
-The GitHub user and GitHub personal token (send as parameters by respectively `user` and `token` from CLI) 
+The GitHub user and GitHub personal token (sent as parameters by respectively `user` and `token` from CLI) 
 are store as `git_access_user` and `git_access_password` and put `/secret/data/github` inside Vault.
 
 To get the `git_access_user` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal 
@@ -56,7 +56,7 @@ vault kv get -field='git_access_password' secret/github
 ```
 
 ## Consul Key Value Store
-The `repo` and `branch` are also sent by parameters from CLI. We use Consul Key Value Store for storing these variables. 
+The `repo` and `branch` are also sent as parameters from CLI. We use Consul Key Value Store for storing these variables. 
 
 To get the `repo` and `branch` from Consul visit [Consul-UI](http://localhost:8500/ui/dc1/kv).
 Alternatively, you can ssh into the vagrant box with `vagrant ssh` , and use the consul binary to get the `repo` and `branch`. See the following commands:
