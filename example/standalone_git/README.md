@@ -42,7 +42,7 @@ make up repo=https://github.com/hannemariavister/versioned_flows.git \
 
 ## Secrets & Credentials 
 The GitHub user and GitHub personal token (sent as parameters by respectively `user` and `token` from CLI) 
-are store as `git_access_user` and `git_access_password` and put in `/secret/data/github` inside Vault.
+are stored as `git_access_user` and `git_access_password` and put in `/secret/data/github` inside Vault, from the [01_put_secrets_vault.yml](../../dev/ansible/01_put_secrets_vault.yml) playbook.
 
 To get the `git_access_user` and `git_access_password` from Vault you can login to the [Vault-UI](http://localhost:8200/) with token `master` and reveal 
 the `git_access_user` and `git_access_password` in /secret/github. 
@@ -56,7 +56,7 @@ vault kv get -field='git_access_password' secret/github
 ```
 
 ## Consul Key Value Store
-The `repo` and `branch` are also sent as parameters from CLI. We use Consul Key Value Store for storing these variables. 
+The `repo` and `branch` are also sent as parameters from CLI. We use Consul Key Value Store for storing these variables, from the [02_put_variables_consul.yml](../../dev/ansible/02_put_variables_consul.yml) playbook. 
 
 To get the `repo` and `branch` from Consul visit [Consul-UI](http://localhost:8500/ui/dc1/kv).
 Alternatively, you can ssh into the vagrant box with `vagrant ssh` , and use the consul binary to get the `repo` and `branch`. See the following commands:
