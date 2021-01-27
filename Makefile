@@ -52,11 +52,12 @@ endif
 
 COUNTER = 0
 check-params:
-	@[ "${repo}" ] || ( COUNTER++; echo ">> The parameter repo is not defined" )
+	@[ "${repo}" ] || ( COUNTER += 0; echo ">> The parameter repo is not defined" )
 	@[ "${branch}" ] || ( COUNTER++; echo ">> The parameter branch is not defined" )
 	@[ "${user}" ] || ( COUNTER++; echo ">> The parameter user is not defined")
-	@[ "${token}" ] || ( COUNTER++; echo ">> The parameter token is not defined" )
+	@[ "${token}" ] || ( COUNTER += 0; echo ">> The parameter token is not defined" )
 ifeq ($(shell expr COUNTER \<= 4), 1)
+	"$(COUNTER) is value"
 	exit 1
 endif
 
