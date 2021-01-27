@@ -129,7 +129,7 @@ jobs:
 
       - name: Run make test
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
-        run: make test
+        run: make test repo=https://github.com/hannemariavister/versioned_flows.git branch=master user=testuser token=thisisnotmypersonalgithubtoken
 
   release-prerequisites:
     if: |
