@@ -11,7 +11,7 @@ The variables below define the GIT configuration for NiFi Registry:
 | `git_flow_storage_directory`  | /opt/nifi-registry/flow-storage  | No| Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.|
 | `git_remote_to_push`  | origin  | No |This variable is used in clone script to set origin name using `-o, --origin <name> use <name> instead of 'origin' to track upstream`. It is also used in NiFi Registry configuration.|
 | `git_access_user`  | " "  | Yes | GitHub Username |
-| `git_access_password`  | " "  | Yes | [Personal token from GitHub](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)|
+| `git_access_password`  | " "  | Yes | [Personal token from GitHub](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). We recommend that you create a new personal token for this purpose.|
 | `git_user_name`  | nifi-registry  | No | Developer|
 | `git_user_email`  | nifi-registry@localhost  | No | Developer email|
 
