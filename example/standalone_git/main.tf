@@ -21,14 +21,15 @@ module "nifi_registry" {
     cpu    = 200
     memory = 128
   }
+  vault_secret = {
+    vault_kv_policy_name    = "kv-secret",
+    vault_kv_path           = "secret/data/github",
+    vault_kv_field_user     = "git_access_user",
+    vault_kv_field_password = "git_access_password"
+  }
 
   # Git version control configuration
-  git_remote_url             = "https://github.com/hannemariavister/versioned_flows.git"
-  git_checkout_branch        = "master"
   git_flow_storage_directory = "/opt/nifi-registry/flow-storage"
   git_remote_to_push         = "origin"
-  git_access_user            = "user"
-  git_access_password        = "thisisnotmypassword"
-  git_user_name              = "nifi-registry"
-  git_user_email             = "nifi-registry@localhost"
+
 }

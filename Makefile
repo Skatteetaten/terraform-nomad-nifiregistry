@@ -24,18 +24,22 @@ ifeq (, $(shell which docker))
 endif
 
 #### Development ####
-# start commands
+# Builds a vagrant box (included Ansible playbooks) for example/standalone, without running the tests.
 dev-standalone: update-box custom_ca
 	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone\""' vagrant up --provision
 
-dev: update-box custom_ca
-	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone_git\""' vagrant up --provision
+# Builds a vagrant box (included Ansible playbooks) for example/standalone_git, without running the tests.
+# Remember the parameters for GIT integration explained in /example/standalone_git/README.md
+# Example: make dev repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub>
+dev: check-params update-box custom_ca
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--skip-tags "test" --extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
 
 custom_ca:
 ifdef CUSTOM_CA
 	cp -f ${CUSTOM_CA} docker/conf/certificates/
 endif
 
+# Builds the vagrant box and the example/standalone
 up-standalone: update-box custom_ca
 ifeq ($(GITHUB_ACTIONS),true) # Always set to true when GitHub Actions is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub Actions.
 	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} ANSIBLE_ARGS='--extra-vars "\"ci_test=true mode=standalone\""' vagrant up --provision
@@ -43,15 +47,29 @@ else
 	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone\""' vagrant up --provision
 endif
 
-up: update-box custom_ca
+# Builds the vagrant box and the example/standalone_git
+# Remember the parameters for GIT integration explained in /example/standalone_git/README.md
+# Example: make up repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub>
+up: check-params update-box custom_ca
 ifeq ($(GITHUB_ACTIONS),true) # Always set to true when GitHub Actions is running the workflow. You can use this variable to differentiate when tests are being run locally or by GitHub Actions.
-	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} ANSIBLE_ARGS='--extra-vars "\"ci_test=true mode=standalone_git\""' vagrant up --provision
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} ANSIBLE_ARGS='--extra-vars "\"ci_test=true mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
 else
-	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git\""' vagrant up --provision
+	SSL_CERT_FILE=${SSL_CERT_FILE} CURL_CA_BUNDLE=${CURL_CA_BUNDLE} CUSTOM_CA=${CUSTOM_CA} ANSIBLE_ARGS='--extra-vars "\"mode=standalone_git repo=$(repo) branch=${branch} user=${user} token=${token}\""' vagrant up --provision
 endif
 
+# Checks that all parameters are set.
+check-params:
+	@[ "${repo}" ] || ( echo ">> The parameter repo is not defined. repo=<GitHub-repository, use HTTPS>" )
+	@[ "${branch}" ] || ( echo ">> The parameter branch is not defined. branch=<branch to checkout and track>")
+	@[ "${user}" ] || (  echo ">> The parameter user is not defined. user=<GitHub username>")
+	@[ "${token}" ] || ( echo ">> The parameter token is not defined. token=<personal token from GitHub>" )
+	@[ "${repo}" ] && [ "${branch}" ] && [ "${user}" ] && [ "${token}" ]|| (echo "See README.md for more details and example: https://github.com/hannemariavister/terraform-nomad-nifiregistry/blob/master/example/standalone_git/README.md" ; exit 1 )
+
+# Runs through your Ansible Playbook tests and builds up /example/standalone
 test-standalone: clean up-standalone
 
+# Runs through your Ansible Playbook tests and builds up /example/standalone_git (remember the parameters for GIT integration explained in /example/standalone_git/README.md).
+# Example: make test repo=<GitHub-repository> branch=<branch to checkout and track> user=<GitHub username> token=<personal token from GitHub>
 test: clean up
 
 template_example: custom_ca
@@ -93,3 +111,5 @@ pre-commit: check_for_docker_binary check_for_terraform_binary
 proxy-nifi-reg:
 	consul intention create -token=master nifi-registry-local nifi-registry
 	consul connect proxy -token master -service nifi-registry-local -upstream nifi-registry:18080 -log-level debug
+
+
