@@ -9,7 +9,7 @@
 
 ### Updated 
 - Updated tests with parameters #39
-- Changed Ansible playbooks `01_put_secrets_vault.yml` and `02_put_variables_consul.yml`, such that they only execute for example/standalone_git. 
+- Changed Ansible playbooks `01_put_secrets_vault.yml` and `02_put_variables_consul.yml`, such that they only execute for example/standalone_git. #43
 
 ## [0.2.1]
 
