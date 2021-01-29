@@ -1,12 +1,19 @@
+- name: Running example/{{ mode }}
+  set_fact:
+    mode: "{{ mode }}"
+
 - name: Put repo value in Consul Key Value Store
   shell: consul kv put github/repo "{{ repo }}"
   run_once: true
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
     CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
+  when: mode == "standalone_git"
+
 - name: Put branch value in Consul Key Value Store
   shell: consul kv put github/branch "{{ branch }}"
   run_once: true
   environment:
     CONSUL_HTTP_ADDR: "{{ lookup('env', 'CONSUL_HTTP_ADDR') }}"
     CONSUL_HTTP_TOKEN: "{{ lookup('env', 'consul_master_token') }}"
+  when: mode == "standalone_git"
