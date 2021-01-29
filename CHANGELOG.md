@@ -1,5 +1,9 @@
 # Changelog
-## [0.3.0 UNRELEASED]
+
+## [0.4.0 UNRELEASED]
+
+
+## [0.3.0]
 
 ### Added
 - Customized Makefile to receive arguments for GitHub authentication #35
