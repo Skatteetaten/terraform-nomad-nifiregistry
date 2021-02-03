@@ -101,6 +101,10 @@ module "nifi_registry" {
 | resource | Resource allocations for cpu and memory | obj(number, number)| { <br> cpu = 500, <br> memory = 1024 <br> } | no |
 | resource_proxy | Resource allocations for proxy | obj(number, number)| { <br> cpu = 200, <br> memory = 128 <br> } | no |
 | use\_canary | Uses canary deployment for nifi | bool | false | no |
+| vault_secret.vault_kv_policy_name | Vault policy name to read secrets | string | "kv-secret" | no |
+| vault_secret.vault_kv_path | Path to the secret key in Vault | string | "secret/github" | no |
+| vault_secret.vault_kv_field_user | Secret key name in Vault kv path | string | "git_access_user" | no |
+| vault_secret.vault_kv_field_password | Secret key name in Vault kv path | string | "git_access_password" | no |
 | git_remote_url  |Git integration: URL of the remote git repository. | string | " " | yes|
 | git_checkout_branch  |Git integration: Branch to checkout and track. | string | " " | yes|
 | git_flow_storage_directory  |Git integration: Default value is set by image, original default value was "./flow-storage". This variable is used in clone script as a destination directory for clone. It is also used in NiFi Registry configuration.| string |/opt/nifi-registry/flow-storage  | yes|
