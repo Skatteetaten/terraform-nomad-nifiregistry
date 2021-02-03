@@ -2,6 +2,12 @@
 
 ## [0.4.0 UNRELEASED]
 
+## [0.3.1 UNRELEASED]
+
+### Added
+
+### Updated
+- Added new step to run `make test-standalone` for example/standalone in .github/workflows/on_pr_push_master.yml #32
 
 ## [0.3.0]
 
@@ -52,4 +58,3 @@
 
 
 ### Fixed
-

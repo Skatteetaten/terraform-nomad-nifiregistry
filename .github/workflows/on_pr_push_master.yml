@@ -131,6 +131,10 @@ jobs:
         if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
         run: make test repo=https://github.com/hannemariavister/versioned_flows.git branch=master user=testuser token=thisisnotmypersonalgithubtoken
 
+      - name: Run make test standalone
+        if: github.repository != 'fredrikhgrelland/vagrant-hashistack-template'
+        run: make test-standalone
+
   release-prerequisites:
     if: |
       contains(github.event.pull_request.labels.*.name, 'major') ||
