@@ -8,6 +8,7 @@
 
 ### Updated
 - Added new step to run `make test-standalone` for example/standalone in .github/workflows/on_pr_push_master.yml #32
+- Updated README.md input variables with `vault_secret`. #47
 
 ## [0.3.0]
 
